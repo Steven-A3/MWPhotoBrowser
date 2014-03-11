@@ -6,7 +6,6 @@
 //  Copyright 2010 d3i. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
 #import "MWCommon.h"
 #import "MWPhotoBrowser.h"
 #import "MWPhotoBrowserPrivate.h"
@@ -56,7 +55,7 @@
     } else {
         _isVCBasedStatusBarAppearance = YES; // default
     }
-    self.wantsFullScreenLayout = YES;
+//    self.wantsFullScreenLayout = YES;
     self.hidesBottomBarWhenPushed = YES;
     _hasBelongedToViewController = NO;
     _photoCount = NSNotFound;
@@ -356,9 +355,9 @@
         // If the frame is zero then definitely leave it alone
         _leaveStatusBarAlone = YES;
     }
-    if (!_leaveStatusBarAlone && self.wantsFullScreenLayout && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    if (!_leaveStatusBarAlone && /* self.wantsFullScreenLayout && */ UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         _previousStatusBarStyle = [[UIApplication sharedApplication] statusBarStyle];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:animated];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:animated];
     }
     
     // Navigation bar appearance
@@ -404,7 +403,7 @@
     [self setControlsHidden:NO animated:NO permanent:YES];
     
     // Status bar
-    if (!_leaveStatusBarAlone && self.wantsFullScreenLayout && UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    if (!_leaveStatusBarAlone && /* self.wantsFullScreenLayout && */ UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [[UIApplication sharedApplication] setStatusBarStyle:_previousStatusBarStyle animated:animated];
     }
     
@@ -1249,8 +1248,8 @@
         } else {
             
             // Status bar and nav bar positioning
-            if (self.wantsFullScreenLayout) {
-                
+//            if (self.wantsFullScreenLayout) {
+            
                 // Need to get heights and set nav bar position to overcome display issues
                 
                 // Get status bar height if visible
@@ -1274,7 +1273,7 @@
                 navBarFrame.origin.y = statusBarHeight;
                 self.navigationController.navigationBar.frame = navBarFrame;
                 
-            }
+//            }
             
         }
     }
@@ -1612,7 +1611,7 @@
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
             emailer.modalPresentationStyle = UIModalPresentationPageSheet;
         }
-        [self presentModalViewController:emailer animated:YES];
+		[self presentViewController:emailer animated:YES completion:NULL];
         [self hideProgressHUD:NO];
     }
 }
