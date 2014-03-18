@@ -1925,11 +1925,12 @@ static void PSTCollectionViewCommonSetup(PSTCollectionView *_self) {
             (long)[oldCollectionViewData numberOfItemsInSection:deleteItem.indexPathBeforeUpdate.section],
             (long)deleteItem.indexPathBeforeUpdate.section);
 
+/*
             for (PSTCollectionViewUpdateItem *moveItem in sortedMutableMoveItems) {
                 NSAssert(![deleteItem.indexPathBeforeUpdate isEqual:moveItem.indexPathBeforeUpdate],
                 @"attempt to delete and move the same item (%@)", deleteItem.indexPathBeforeUpdate);
             }
-
+*/
             if (!operations[@(deleteItem.indexPathBeforeUpdate.section)])
                 operations[@(deleteItem.indexPathBeforeUpdate.section)] = [NSMutableDictionary dictionary];
 
