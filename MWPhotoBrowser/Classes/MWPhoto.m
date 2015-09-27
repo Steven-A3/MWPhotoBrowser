@@ -187,7 +187,7 @@
     } else {
         
         // Failed - no source
-        @throw [NSException exceptionWithName:nil reason:nil userInfo:nil];
+        @throw [NSException exceptionWithName:@"No source" reason:nil userInfo:nil];
         
     }
 }
